@@ -1286,13 +1286,41 @@ void AddBattlegroundScripts()
 
 #ifdef SCRIPTS
 /* This is where custom scripts' loading functions should be declared. */
+void AddSC_Choose_Gear_NPC_CreatureScript();
+void AddSC_Teleporter_NPC_CreatureScript();
+void AddSC_Enchanter_NPC_CreatureScript();
+void AddSC_Professions_NPC_CreatureScript();
+void AddSC_Beastmaster_NPC_CreatureScript();
 
+void AddSC_OnSave_PlayerScript();
+void AddSC_OnLogin_PlayerScript();
+void AddSC_OnUpdateZone_PlayerScript();
+void AddSC_OnDuel_PlayerScript();
+
+void AddSC_OnUpdate_WorldScript();
+
+// Work in progress.
+void AddSC_Enchanter_NPC_CreatureScript1();
 #endif
 
 void AddCustomScripts()
 {
 #ifdef SCRIPTS
     /* This is where custom scripts should be added. */
+    AddSC_Choose_Gear_NPC_CreatureScript();
+    AddSC_Teleporter_NPC_CreatureScript();
+    AddSC_Enchanter_NPC_CreatureScript();
+    AddSC_Professions_NPC_CreatureScript();
+    AddSC_Beastmaster_NPC_CreatureScript();
 
+    AddSC_OnSave_PlayerScript();
+    AddSC_OnLogin_PlayerScript();
+    AddSC_OnDuel_PlayerScript();
+    AddSC_OnUpdateZone_PlayerScript();
+
+    AddSC_OnUpdate_WorldScript();
+
+    // Work in progress.
+    AddSC_Enchanter_NPC_CreatureScript1();
 #endif
 }
