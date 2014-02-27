@@ -21,6 +21,54 @@ int32 GetWarriorShout(Player* player)
     return 47440; // Commanding Shout.
 }
 
+int32 GetShamanWeaponImbue(Player* player)
+{
+    QueryResult result = CharacterDatabase.PQuery("SELECT `earthliving_weapon`, `flametongue_weapon`, `frostbrand_weapon`, `rockbiter_weapon`, `windfury_weapon` FROM `custom_buffs` WHERE  `guid`=%u", player->GetGUID());
+    if (!result)
+        return 1;
+
+    if (result)
+    {
+        do
+        {
+            uint32 imbue = 0;
+            Field * field = result->Fetch();
+            // Earthliving Weapon.
+            if (field[0].GetUInt32() == 1)
+                imbue = imbue + 1; // Main-Hand.
+            if (field[0].GetUInt32() == 2)
+                imbue = imbue + 3; // Off-Hand.
+
+            // Flametongue Weapon.
+            if (field[1].GetUInt32() == 1)
+                imbue = imbue + 7; // Main-Hand..
+            if (field[1].GetUInt32() == 2)
+                imbue = imbue + 15; // Off-Hand.
+
+            // Frostbrand Weapon.
+            if (field[2].GetUInt32() == 1)
+                imbue = imbue + 31; // Main-Hand..
+            if (field[2].GetUInt32() == 2)
+                imbue = imbue + 63; // Off-Hand.
+
+            // Rockbiter Weapon.
+            if (field[3].GetUInt32() == 1)
+                imbue = imbue + 127; // Main-Hand.
+            if (field[3].GetUInt32() == 2)
+                imbue = imbue + 255; // Off-Hand.
+
+            // Windfury Weapon.
+            if (field[4].GetUInt32() == 1)
+                imbue = imbue + 511; // Main-Hand..
+            if (field[4].GetUInt32() == 2)
+                imbue = imbue + 1023; // Off-Hand.
+
+            return imbue;
+        } while (result->NextRow());
+    }
+    return false;
+}
+
 // Prayer of Fortitude, Prayer of Shadow Protection, Prayer of Spirit.
 uint32 Priest_Buffs[] = { 48162, 48170, 48074 };
 // Gift of the Wild, Thorns.
@@ -141,15 +189,41 @@ public:
                         if (itr->getSource()->getClass() == CLASS_SHAMAN)
                             for (int i = 0; i < 2; i++)
                             {
-                                if (player->HasSpell(61301)) // Riptide.
-                                    player->CastSpell(player, 51994, true); // Water Shield.
-                                if (player->HasSpell(59159)) // Thunderstorm.
-                                    player->CastSpell(player, 51994, true); // Water Shield.
-                                if (player->HasSpell(51533)) // Feral Spirit.
-                                    player->CastSpell(player, 49281, true); // Lightning Shield.
+                                /*if (GetShamanWeaponImbue(player))
+                                {
+                                    switch (GetShamanWeaponImbue(player))
+                                    {
+                                        /* Ids:
+                                        * 3350 - Earthliving Weapon.
+                                        * 3781 - Flametongue Weapon.
+                                        * 3784 - Frostbrand Weapon.
+                                        * 3021 - Rockbiter Weapon.
+                                        * 3787 - Windfury Weapon.
+                                                                            case 1: // Main-Hand Earthliving Weapon.
+                                    case 3: // Off-Hand Earthliving Weapon.
+                                    case 4: // Double Earthliving Weapon.
+                                    case 7: // Main-Hand Flametongue Weapon.
+                                    case 15: // Off-Hand Flametongue Weapon.
+                                    case 16: // Main-Hand Earthliving Weapon & Off-Hand Flametongue Weapon.
+                                    case 30: // Double Flametongue
+                                    case 31: // Main-Hand Frostbrand Weapon.
+                                    case 34: // Main-Hand Frostbrand Weapon & Off-Hand Earthliving Weapon.
+                                    case 46: // mh fbw / oh flametong
+                                    case 62: // double fbw
+                                    case 63: // fbw oh
+                                        break;
 
-                                player->CastSpell(player, Shaman_Buffs[i], true);
-                                itr->getSource()->CastSpell(itr->getSource(), Shaman_Buffs[i], true);
+                                    }
+                                }*/
+                                if (player->HasSpell(61301)) // Riptide.
+                                        player->CastSpell(player, 51994, true); // Water Shield.
+                                    if (player->HasSpell(59159)) // Thunderstorm.
+                                        player->CastSpell(player, 51994, true); // Water Shield.
+                                    if (player->HasSpell(51533)) // Feral Spirit.
+                                        player->CastSpell(player, 49281, true); // Lightning Shield.
+
+                                    player->CastSpell(player, Shaman_Buffs[i], true);
+                                    itr->getSource()->CastSpell(itr->getSource(), Shaman_Buffs[i], true);
 
                             }
                         if (itr->getSource()->getClass() == CLASS_DEATH_KNIGHT)

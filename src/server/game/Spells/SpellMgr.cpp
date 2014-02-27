@@ -3231,10 +3231,6 @@ void SpellMgr::LoadDbcDataCorrections()
             case 63675: // Improved Devouring Plague
                 spellInfo->AttributesEx3 |= SPELL_ATTR3_NO_DONE_BONUS;
                 break;
-            case 8145: // Tremor Totem (instant pulse)
-            case 6474: // Earthbind Totem (instant pulse)
-                spellInfo->AttributesEx5 |= SPELL_ATTR5_START_PERIODIC_AT_APPLY;
-                break;
             case 52109: // Flametongue Totem rank 1 (Aura)
             case 52110: // Flametongue Totem rank 2 (Aura)
             case 52111: // Flametongue Totem rank 3 (Aura)
@@ -3635,6 +3631,180 @@ void SpellMgr::LoadDbcDataCorrections()
                 break;
             case 24314: // Threatening Gaze
                 spellInfo->AuraInterruptFlags |= AURA_INTERRUPT_FLAG_CAST | AURA_INTERRUPT_FLAG_MOVE | AURA_INTERRUPT_FLAG_JUMP;
+                break;
+            case 32182: // Heroism.
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR1_UNAUTOCASTABLE_BY_PET;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK26;
+                spellInfo->AttributesEx7 |= SPELL_ATTR7_ALLIANCE_ONLY;
+                break;
+            case 2825:  // Bloodlust.
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR1_UNAUTOCASTABLE_BY_PET;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK26;
+                spellInfo->AttributesEx7 |= SPELL_ATTR7_HORDE_ONLY;
+                break;
+            case 64843: // Divine Hymn.
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR1_CHANNELED_1;
+                spellInfo->Attributes |= SPELL_ATTR1_CHANNELED_2;
+                spellInfo->Attributes |= SPELL_ATTR1_CHANNEL_DISPLAY_SPELL_NAME;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_NOT_NEED_SHAPESHIFT;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_TRIGGERED_CAN_TRIGGER_PROC;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_DONT_DISPLAY_RANGE;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_NOT_STEALABLE;
+                spellInfo->AttributesEx6 |= SPELL_ATTR5_HASTE_AFFECT_DURATION;
+                break;
+            case 64844: // Divine Hymn.
+                spellInfo->Attributes |= SPELL_ATTR1_CANT_BE_REDIRECTED;
+                spellInfo->Attributes |= SPELL_ATTR1_CANT_BE_REFLECTED;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_TRIGGERED_CAN_TRIGGER_PROC;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_TRIGGERED;
+                break;
+            case 55362: // Living Bomb Explosion.
+            case 44461: // Living Bomb Explosion.
+            case 55361: // Living Bomb Explosion.
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_DEAD;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_MOUNTED;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_SITTING;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_TRIGGERED_CAN_TRIGGER_PROC;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_UNK26;
+                break;
+            case 57330: // Horn of Winter.
+            case 57623: // Horn of Winter.
+                spellInfo->Attributes |= SPELL_ATTR0_ABILITY;
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK26;
+                spellInfo->AttributesEx7 |= SPELL_ATTR7_BENEFIT_FROM_SPELLMOD;
+                break;
+            case 5242: // Battle Shout.
+            case 6192: // Battle Shout.
+            case 6673: // Battle Shout.
+            case 11549: // Battle Shout.
+            case 11550: // Battle Shout.
+            case 11551: // Battle Shout.
+            case 25289: // Battle Shout.
+            case 47436: // Battle Shout.
+                spellInfo->Attributes |= SPELL_ATTR0_ABILITY, SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                /*
+                This may not be correct.
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                */
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK26;
+                spellInfo->AttributesEx7 |= SPELL_ATTR7_BENEFIT_FROM_SPELLMOD;
+                break;
+            case 45517: // Commanding Shout.
+            case 47439: // Commanding Shout.
+            case 47440: // Commanding Shout.
+                spellInfo->Attributes |= SPELL_ATTR0_ABILITY;
+                /*
+                This may not be correct.
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                */
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK26;
+                spellInfo->AttributesEx7 |= SPELL_ATTR7_BENEFIT_FROM_SPELLMOD;
+                break;
+            case 33110: // Prayer of Mending.
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_DONT_DISPLAY_RANGE;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_TRIGGERED_CAN_TRIGGER_PROC;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx |= SPELL_ATTR1_NO_THREAT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_SITTING;
+                break;
+            case 52212: // Death and Decay.
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_CAN_TARGET_INVISIBLE;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_START_PERIODIC_AT_APPLY;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_UNK25;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_DONT_DISPLAY_RANGE;
+                spellInfo->AttributesEx |= SPELL_ATTR1_CANT_BE_REDIRECTED;
+                spellInfo->AttributesEx |= SPELL_ATTR1_CANT_BE_REFLECTED;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_DEAD;
+                spellInfo->Attributes |= SPELL_ATTR0_NEGATIVE_1;
+                break;
+            case 24259: // Spell Lock.
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_IGNORE_HIT_RESULT;
+                spellInfo->AttributesEx |= SPELL_ATTR1_CANT_BE_REDIRECTED;
+                spellInfo->AttributesEx |= SPELL_ATTR1_CANT_BE_REFLECTED;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->speed = 80;
+                break;
+            case 68645: // Goblin Rocket Pack.
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_DONT_DISPLAY_COOLDOWN;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_UNK21;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx |= SPELL_ATTR1_DONT_DISPLAY_IN_AURA_BAR;
+                spellInfo->Attributes |= SPELL_ATTR0_HIDE_IN_COMBAT_LOG;
+                spellInfo->Attributes |= SPELL_ATTR0_UNAFFECTED_BY_INVULNERABILITY;
+                spellInfo->EffectRadiusIndex[0] = EFFECT_RADIUS_200_YARDS;
+                spellInfo->rangeIndex = 13;
+                break;
+            case 15473: // Shadowform.
+                spellInfo->EffectApplyAuraName[0] = SPELL_AURA_MOD_DAMAGE_PERCENT_TAKEN;
+                spellInfo->EffectApplyAuraName[0] = SPELL_AURA_MOD_DAMAGE_PERCENT_DONE;
+                spellInfo->EffectApplyAuraName[0] = SPELL_AURA_MOD_SHAPESHIFT;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_UNK19;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_UNK21;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_UNK1;
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_MOUNTED;
+                spellInfo->Attributes |= SPELL_ATTR0_DISABLED_WHILE_ACTIVE;
+                spellInfo->Attributes |= SPELL_ATTR0_CASTABLE_WHILE_SITTING;
+                break;
+            case 8145: // Tremor Totem.
+            case 8172: // Cleansing Totem.
+                spellInfo->Attributes |= SPELL_ATTR0_PASSIVE;
+                spellInfo->Attributes |= SPELL_ATTR0_HIDE_IN_COMBAT_LOG;
+                spellInfo->Attributes |= SPELL_ATTR0_UNK11;
+                spellInfo->Attributes |= SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_START_PERIODIC_AT_APPLY;
+                break;
+            case 6474: // Earthbind Totem.
+                spellInfo->Attributes |= SPELL_ATTR0_PASSIVE;
+                spellInfo->Attributes |= SPELL_ATTR0_HIDE_IN_COMBAT_LOG;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_START_PERIODIC_AT_APPLY;
+                break;
+            case 5171: // Slice and Dice.
+            case 6774: // Slice and Dice.
+                spellInfo->Attributes |= SPELL_ATTR0_ABILITY, SPELL_ATTR0_NOT_SHAPESHIFT;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->Attributes |= SPELL_ATTR0_UNAFFECTED_BY_INVULNERABILITY;
+                spellInfo->AttributesEx |= SPELL_ATTR1_NOT_BREAK_STEALTH;
+                spellInfo->AttributesEx |= SPELL_ATTR1_NO_THREAT;
+                spellInfo->AttributesEx |= SPELL_ATTR1_REQ_COMBO_POINTS2;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_IGNORE_HIT_RESULT;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_UNK28;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_DONT_DISPLAY_RANGE;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_NO_INITIAL_AGGRO;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_UNK4;
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_IGNORE_CASTER_AURAS;
+                spellInfo->AttributesEx6 |= SPELL_ATTR6_UNK23;
+                break;
+            case 49158: // Corpse Explosion.
+            case 51325: // Corpse Explosion.
+            case 51326: // Corpse Explosion.
+            case 51327: // Corpse Explosion.
+            case 51328: // Corpse Explosion.
+                spellInfo->AttributesEx |= SPELL_ATTR1_UNAUTOCASTABLE_BY_PET;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_DEAD;
+                spellInfo->AttributesEx4 |= SPELL_ATTR4_IGNORE_RESISTANCES;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_UNK26;
+                break;
             default:
                 break;
         }

@@ -1412,6 +1412,9 @@ void World::SetInitialWorldSettings()
     sLog->outInfo(LOG_FILTER_SERVER_LOADING, "Loading Creature templates...");
     sObjectMgr->LoadCreatureTemplates();
 
+    sLog->outInfo(LOG_FILTER_SERVER_LOADING, "Loading Creature template outfits...");     // must be after LoadCreatureTemplates
+    sObjectMgr->LoadCreatureOutfits();
+
     sLog->outInfo(LOG_FILTER_SERVER_LOADING, "Loading Creature template addons...");
     sObjectMgr->LoadCreatureTemplateAddons();
 
