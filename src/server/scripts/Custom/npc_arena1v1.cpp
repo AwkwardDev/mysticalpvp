@@ -14,6 +14,7 @@
 #include "ArenaTeam.h"
 #include "Language.h"
 #include "npc_arena1v1.h"
+#include "World.h"
 
 
 class npc_1v1arena : public CreatureScript
@@ -46,7 +47,7 @@ public:
 		Battleground* bg = sBattlegroundMgr->GetBattlegroundTemplate(BATTLEGROUND_AA);
 		if (!bg)
 		{
-			TC_LOG_ERROR(LOG_FILTER_NETWORKIO, "Battleground: template bg (all arenas) not found");
+            sLog->outInfo(LOG_FILTER_NETWORKIO, "Battleground: template bg (all arenas) not found");
 			return false;
 		}
 
