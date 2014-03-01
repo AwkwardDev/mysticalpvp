@@ -23,6 +23,9 @@ set(scripts_STAT_SRCS
   Custom/PlayerScript/OnUpdateZone_PlayerScript.cpp
   
   Custom/WorldScript/OnUpdate_WorldScript.cpp
+  
+  Custom/npc_arena1v1.cpp
+  Custom/npc_arena1v1.h
 )
 
 message("  -> Prepared: Custom")

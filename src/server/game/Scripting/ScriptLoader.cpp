@@ -1299,6 +1299,8 @@ void AddSC_OnDuel_PlayerScript();
 
 void AddSC_OnUpdate_WorldScript();
 
+void AddSC_npc_1v1arena();
+
 // Work in progress.
 void AddSC_Enchanter_NPC_CreatureScript1();
 #endif
@@ -1322,5 +1324,7 @@ void AddCustomScripts()
 
     // Work in progress.
     AddSC_Enchanter_NPC_CreatureScript1();
+
+	AddSC_npc_1v1arena();
 #endif
 }
