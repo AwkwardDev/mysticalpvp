@@ -20,7 +20,7 @@ set(scripts_STAT_SRCS
   Custom/PlayerScript/OnLogin_PlayerScript.cpp
   Custom/PlayerScript/OnSave_PlayerScript.cpp
   Custom/PlayerScript/OnDuel_PlayerScript.cpp
-  Custom/PlayerScript/OnUpdateZone_PlayerScript.cpp
+  #Custom/PlayerScript/OnUpdateZone_PlayerScript.cpp
   
   Custom/WorldScript/OnUpdate_WorldScript.cpp
   
