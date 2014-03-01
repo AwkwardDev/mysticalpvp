@@ -3805,6 +3805,30 @@ void SpellMgr::LoadDbcDataCorrections()
                 spellInfo->AttributesEx4 |= SPELL_ATTR4_IGNORE_RESISTANCES;
                 spellInfo->AttributesEx5 |= SPELL_ATTR5_UNK26;
                 break;
+            case 32727: // Arena Preparation - remove invisibility aura
+            case 44949: // Whirlwind's offhand attack - TODO: remove this (50% weapon damage effect) & bladestorm?
+                spellInfo->Effect[1] = NULL;
+                break;
+            case 12723: // Sweeping Strikes.
+                spellInfo->Attributes |= SPELL_ATTR0_IMPOSSIBLE_DODGE_PARRY_BLOCK;
+                spellInfo->Attributes |= SPELL_ATTR0_ABILITY;
+                spellInfo->Attributes |= SPELL_ATTR0_DONT_AFFECT_SHEATH_STATE;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_CAN_TARGET_NOT_IN_LOS;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_UNK7;
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_UNK22, SPELL_ATTR2_CANT_CRIT;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_TRIGGERED_CAN_TRIGGER_PROC_2;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_NO_DONE_BONUS;
+                spellInfo->AttributesEx3 |= SPELL_ATTR3_DONT_DISPLAY_RANGE;
+                spellInfo->AttributesEx5 |= SPELL_ATTR5_UNK15;
+                break;
+            case 57973: // Deadly Poison.
+            case 57968: // Instant Poison.
+            case 57978: // Wound Poison.
+            case 57982: // Anesthetic Poison.
+            case 3408: // Crippling Poison.
+            case 5761: // Mind-numbing Poison.
+                spellInfo->AttributesEx2 |= SPELL_ATTR2_PRESERVE_ENCHANT_IN_ARENA;
+                break;
             default:
                 break;
         }

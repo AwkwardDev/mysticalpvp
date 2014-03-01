@@ -1571,6 +1571,14 @@ SpellCastResult SpellInfo::CheckTarget(Unit const* caster, WorldObject const* ta
     if (unitTarget->HasAuraType(SPELL_AURA_PREVENT_RESURRECTION))
         if (HasEffect(SPELL_EFFECT_SELF_RESURRECT) || HasEffect(SPELL_EFFECT_RESURRECT) || HasEffect(SPELL_EFFECT_RESURRECT_NEW))
             return SPELL_FAILED_TARGET_CANNOT_BE_RESURRECTED;
+	
+	if ((Effects[0].TargetA.GetTarget() == TARGET_SRC_CASTER) & (Effects[0].TargetB.GetTarget() == TARGET_UNIT_SRC_AREA_ENEMY))
+		if (!caster->IsWithinLOSInMap(target))
+			return SPELL_FAILED_DONT_REPORT;
+	
+	if (Effects[0].TargetA.GetTarget() == TARGET_UNIT_CONE_ENEMY_104)
+		if (!caster->IsWithinLOSInMap(target))
+			return SPELL_FAILED_DONT_REPORT;
 
     return SPELL_CAST_OK;
 }
